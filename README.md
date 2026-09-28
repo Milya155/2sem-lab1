@@ -41,10 +41,10 @@ pip install -r requirements.txt
 
 
 ## Использование
-'''
+```
 python analyze.py --start_date 2024-01-01 --end_date 2024-05-20
 python analyze.py --category "Электроника" --top_n 5
-'''
+```
 
 
 |Команда|Описание|
@@ -102,8 +102,7 @@ python analyze.py --category "Электроника" --top_n 5
 
 ## Лицензия
 
-[ссылка](https://yandex.ru/search/?text=markdown+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&clid=2411726&lr=51)
-/n Это учебный проект[^1].
+[ссылка](https://yandex.ru/search/?text=markdown+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&clid=2411726&lr=51)    Это учебный проект[^1].
 
 ---
 [^1]: Выполнено в рамках курса по проектированию баз знаний.
