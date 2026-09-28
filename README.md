@@ -32,7 +32,19 @@
 
 >Важно: даты должны быть в формате "YYYY-MM-DD"(например,"2024-03-15")
 
+```bash
+git clone https://github.com/user/devdiary.git
+cd devdiary
+pip install -r requirements.txt
+```
+
 ## Использование
+
+```bash
+git clone https://github.com/user/devdiary.git
+cd devdiary
+pip install -r requirements.txt
+```
 
 
 |Команда|Описание|
