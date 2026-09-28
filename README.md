@@ -102,7 +102,7 @@ python analyze.py --category "Электроника" --top_n 5
 
 ## Лицензия
 
-[ссылка](https://yandex.ru/search/?text=markdown+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD&clid=2411726&lr=51)    
+[Ссылка на интернет-магазин](https://www.ozon.ru/?__rr=1&abt_att=1&origin_referer=yandex.ru)  
 
 
 Это учебный проект[^1].
