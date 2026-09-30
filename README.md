@@ -133,7 +133,7 @@ def analyze_sales(
     :return: Словарь со статистикой (не менее 12 ключей).
     """
     
-    # Требование 1: Валидация входа. Пустой список — вернуть словарь с нулями/пустыми структурами.
+    # Валидация входа. Пустой список — вернуть словарь с нулями/пустыми структурами.
     if not orders:
         return {
             "total_revenue": 0.0,
@@ -150,7 +150,7 @@ def analyze_sales(
             "percentiles": {}
         }
 
-    # Требование 3: Не мутировать входные данные. Создаем новый список.
+    # Не мутировать входные данные. Создаем новый список.
     filtered_orders = []
     
     # Подготовка дат для фильтрации
@@ -158,7 +158,7 @@ def analyze_sales(
     end_dt = datetime.strptime(end_date, "%Y-%m-%d") if end_date else None
 
     for order in orders:
-        # Требование 9: Обрабатываем None-поля там, где они возможны.
+        # Обрабатываем None-поля там, где они возможны.
         o_date_str = order.get("date")
         if not o_date_str:
             continue
@@ -189,7 +189,7 @@ def analyze_sales(
         if not include_returns and o_is_returned:
             continue
 
-        # Сохраняем очищенные данные в новый список
+        # Сохранение очищенных данных в новый список
         filtered_orders.append({
             "date": o_date_str,
             "category": o_category,
@@ -225,22 +225,22 @@ def analyze_sales(
     count_orders = len(filtered_orders)
     returns_count = len(returns)
 
-    # Требование 2: Обработка деления на ноль во всех вычислениях.
+    # Обработка деления на ноль во всех вычислениях.
     avg_check = total_revenue / count_orders if count_orders > 0 else 0.0
     median_check = statistics.median(amounts) if amounts else 0.0
     return_rate = returns_count / count_orders if count_orders > 0 else 0.0
 
-    # Требование 10: Сортировка должна быть детерминированной.
-    # Сортируем по убыванию количества, а при равенстве — по алфавиту (ключу).
+    # Сортировка должна быть детерминированной.
+    # Сортировка по убыванию количества, а при равенстве — по алфавиту (ключу).
     def get_sorted_counts(items):
         counter = collections.Counter(items)
         return dict(sorted(counter.items(), key=lambda x: (-x[1], x[0])))
 
-    # Топ-N товаров (используем id как идентификатор товара)
+    # Топ-N товаров 
     product_counter = collections.Counter(o["id"] for o in filtered_orders)
     top_n_products = dict(sorted(product_counter.items(), key=lambda x: (-x[1], x[0]))[:top_n])
 
-    # Распределения
+    # Распределение
     category_distribution = get_sorted_counts(o["category"] for o in filtered_orders)
     city_distribution = get_sorted_counts(o["city"] for o in filtered_orders)
     payment_distribution = get_sorted_counts(o["payment_method"] for o in filtered_orders)
@@ -270,8 +270,8 @@ def analyze_sales(
     elif amounts:
         percentiles = {"25%": round(amounts[0], 2), "50%": round(amounts[0], 2), "75%": round(amounts[0], 2)}
 
-    # Требование 7: Округление числовых результатов до 2 знаков.
-    # Требование 8: Возвращать не менее 12 ключей в итоговом словаре.
+    # Округление числовых результатов до 2 знаков.
+    # Возвращать не менее 12 ключей в итоговом словаре.
     result = {
         "total_revenue": round(total_revenue, 2),
         "avg_check": round(avg_check, 2),
